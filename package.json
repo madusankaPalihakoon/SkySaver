@@ -1,0 +1,20 @@
+{
+  "name": "skysaver",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tailwindcss -i ./pages/styles.css -o ./dist/styles.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "tailwindcss": "^3.4.3"
+  },
+  "dependencies": {
+    "@material-tailwind/html": "^2.2.2",
+    "swiper": "^11.1.3"
+  }
+}
