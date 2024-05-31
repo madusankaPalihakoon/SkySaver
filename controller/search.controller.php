@@ -1,4 +1,8 @@
 <?php
+require_once __DIR__ . "/../vendor/autoload.php";
+
+use Src\Classes\Trip;
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   if (isset($_POST['trip'])) {
     $trip = $_POST['trip'];
@@ -71,6 +75,14 @@ function handleOneWayTrip()
     sendResponseJson($response);
   }
 
+
+  $from = $_POST['from'];
+  $to = $_POST['to'];
+  $date = $_POST['departureDateOneWay'];
+
+  $trip = new Trip();
+  $data = $trip->getOneWayTrip($from, $to, $date);
+  echo json_encode($data);
   $response = [
     'status' => false,
     'message' => 'One Way trip search handled successfully!'
@@ -96,5 +108,3 @@ function sendResponseJson($response)
   header('Location:' . $response['page'] . '', true, 200);
   exit;
 }
-
-// { ["from"]=> string(0) "" ["to"]=> string(0) "" ["departureDateRoundTrip"]=> string(0) "" ["returnDate"]=> string(0) "" ["departureDateOneWay"]=> string(0) "" ["passengerCount"]=> string(0) "" ["trip"]=> string(10) "Round Trip" }
