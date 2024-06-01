@@ -55,9 +55,15 @@ $shedules = getSheduleDetails();
         </div>
       </div>
       <div class="w-full flex justify-end mr-5">
-        <div class=" w-fit mx-5 h-auto hover:text-blue-600">
-          <a href="pages/login">
+        <div class=" w-fit mx-1 h-auto hover:text-blue-600">
+          <a href="pages/login.php">
             LOGIN
+          </a>
+        </div>
+        <span>/</span>
+        <div class=" w-fit mx-1 h-auto hover:text-blue-600">
+          <a href="pages/signup.php">
+            SIGNUP
           </a>
         </div>
       </div>
@@ -201,7 +207,7 @@ $shedules = getSheduleDetails();
       <?php endforeach; ?>
       <!-- shedule -->
     </div>
-    <div class="flex w-full mx-auto h-max">
+    <div class="flex w-full mx-auto h-max mb-5">
       <a class=" mx-auto bg-blue-600 text-blue-50 hover:bg-blue-700 rounded-md px-2 py-4 text-xl font-bold" href="pages/shedule.php">All Shedules</a>
     </div>
   </main>

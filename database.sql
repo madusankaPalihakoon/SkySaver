@@ -111,12 +111,9 @@ INSERT INTO schedule (
 (10, 1, 10, '2024-06-10', '17:00:00', '2024-06-10', '23:00:00', 9500.00, 1800.00, 'LKR');
 
 
-
-
-CREATE TABLE PersonalInformation (
+CREATE TABLE registerdetails (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(50) NOT NULL,
-    middle_name VARCHAR(50),
+    first_name VARCHAR(50),
     last_name VARCHAR(50) NOT NULL,
     date_of_birth DATE NOT NULL,
     gender ENUM('Male', 'Female', 'Other') NOT NULL,
@@ -125,20 +122,35 @@ CREATE TABLE PersonalInformation (
     phone_number VARCHAR(20),
     passport_number VARCHAR(20) UNIQUE,
     passport_expiry_date DATE,
-    visa_information TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO PersonalInformation (
-    first_name, middle_name, last_name, date_of_birth, gender, nationality, 
-    email, phone_number, passport_number, passport_expiry_date, visa_information
+INSERT INTO registerdetails (
+    first_name, last_name, date_of_birth, gender, nationality, 
+    email, phone_number, passport_number, passport_expiry_date
 ) VALUES
-('John', 'A', 'Doe', '1990-01-01', 'Male', 'USA', 'john.doe@example.com', '123-456-7890', 'X1234567', '2025-01-01', 'N/A'),
-('Jane', NULL, 'Smith', '1985-05-15', 'Female', 'Canada', 'jane.smith@example.com', '234-567-8901', 'Y2345678', '2024-05-15', 'N/A'),
-('Alice', 'B', 'Johnson', '1992-07-20', 'Female', 'UK', 'alice.johnson@example.com', '345-678-9012', 'Z3456789', '2026-07-20', 'Tourist Visa valid until 2024-07-20'),
-('Bob', NULL, 'Brown', '1988-10-30', 'Male', 'Australia', 'bob.brown@example.com', '456-789-0123', 'A4567890', '2023-10-30', 'N/A'),
-('Emily', 'C', 'Davis', '1995-12-25', 'Female', 'New Zealand', 'emily.davis@example.com', '567-890-1234', 'B5678901', '2025-12-25', 'N/A');
+('John', 'Doe', '1990-01-01', 'Male', 'USA', 'john.doe@example.com', '123-456-7890', 'X1234567', '2025-01-01'),
+('Jane' ,'Smith', '1985-05-15', 'Female', 'Canada', 'jane.smith@example.com', '234-567-8901', 'Y2345678', '2024-05-15'),
+('Alice', 'Johnson', '1992-07-20', 'Female', 'UK', 'alice.johnson@example.com', '345-678-9012', 'Z3456789', '2026-07-20'),
+('Bob', 'Brown', '1988-10-30', 'Male', 'Australia', 'bob.brown@example.com', '456-789-0123', 'A4567890', '2023-10-30'),
+('Emily', 'Davis', '1995-12-25', 'Female', 'New Zealand', 'emily.davis@example.com', '567-890-1234', 'B5678901', '2025-12-25');
+
+CREATE TABLE accountdetails (
+    account_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    account_type ENUM('Administrator', 'Admin', 'User') DEFAULT 'User',
+    account_creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO accountdetails (
+    user_id, username, password_hash
+) VALUES
+('John','$2y$10$hhr8YKsSvibvH45zGlwFauN7ZlAqJIOyOyr5nyK73BGYc6vEit2gq'),
+('Jane','$2y$10$hhr8YKsSvibvH45zGlwFauN7ZlAqJIOyOyr5nyK73BGYc6vEit2gq'),
+('Alice','$2y$10$hhr8YKsSvibvH45zGlwFauN7ZlAqJIOyOyr5nyK73BGYc6vEit2gq'),
+('Bob','$2y$10$hhr8YKsSvibvH45zGlwFauN7ZlAqJIOyOyr5nyK73BGYc6vEit2gq'),
+('Emily','$2y$10$hhr8YKsSvibvH45zGlwFauN7ZlAqJIOyOyr5nyK73BGYc6vEit2gq');
 
 
 CREATE TABLE Pricing (
@@ -221,18 +233,7 @@ VALUES
 (5, 20, 50.00);
 
 
-CREATE TABLE UserAccountManagement (
-    account_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    password_hash VARCHAR(255) NOT NULL,
-    account_creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    account_status ENUM('Active', 'Inactive', 'Banned') DEFAULT 'Active',
-    preferred_language VARCHAR(20) DEFAULT 'English',
-    preferred_currency VARCHAR(10) DEFAULT 'USD',
-    notification_preferences ENUM('Email', 'SMS', 'None') DEFAULT 'Email',
-    FOREIGN KEY (user_id) REFERENCES PersonalInformation(user_id)
-);
+
 
 -- Example data
 INSERT INTO UserAccountManagement (user_id, username, password_hash, preferred_language, preferred_currency, notification_preferences)

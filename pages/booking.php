@@ -1,6 +1,7 @@
 <?php
 if (isset($_GET)) {
   $data = $_GET;
+  var_dump($data);
 } else {
   $data = [];
 }
@@ -24,48 +25,48 @@ if (isset($_GET)) {
       <h2 class=" w-full text-center text-2xl font-bold">Comform your Booking</h2>
       <div class="flex w-full p-5 rounded-md mt-2 justify-center ">
         <form class=" flex flex-wrap w-5/6 mx-auto" action="./booking.php" method="get">
-          <span class="w-full text-xl text-blue-500 font-semibold">Personal Details</span>
+          <span class="w-full text-xl text-blue-500 font-semibold text-center">Personal Details</span>
           <div class="flex w-full py-2 mx-auto text-xl flex-wrap">
-            <label class=" w-full font-bold my-1" for="name">Name: </label>
-            <input class=" w-full my-1 p-1 outline-none rounded-md" type="text" name="name" id="name" readonly>
+            <label class=" w-1/2 font-bold my-1" for="name">Name: </label>
+            <input class=" w-1/2 my-1 p-1 outline-none rounded-md" type="text" name="name" id="name" readonly>
           </div>
           <div class="flex w-full py-2 mx-auto text-xl flex-wrap">
-            <label class=" w-full font-bold my-1" for="address">Address: </label>
-            <input class=" w-full my-1 p-1 outline-none rounded-md" type="text" name="address" id="address" readonly>
+            <label class=" w-1/2 font-bold my-1" for="address">Address: </label>
+            <input class=" w-1/2 my-1 p-1 outline-none rounded-md" type="text" name="address" id="address" readonly>
           </div>
           <div class="flex w-full py-2 mx-auto text-xl flex-wrap">
-            <label class=" w-full font-bold my-1" for="email">Email: </label>
-            <input class=" w-full my-1 p-1 outline-none rounded-md" type="email" id="email" readonly>
+            <label class=" w-1/2 font-bold my-1" for="email">Email: </label>
+            <input class=" w-1/2 my-1 p-1 outline-none rounded-md" type="email" id="email" readonly>
           </div>
-          <span class="w-full text-xl text-blue-500 font-semibold">Flight Details</span>
+          <span class="w-full text-xl text-blue-500 font-semibold text-center">Flight Details</span>
           <div class="flex w-full py-2 mx-auto text-xl flex-wrap">
-            <label class=" w-full font-bold my-1" for="airline_name">Airline Name: </label>
-            <input class=" w-full my-1 p-1 outline-none rounded-md" type="text" name="airline_name" id="airline_name" readonly>
-          </div>
-          <div class="flex w-full py-2 mx-auto text-xl flex-wrap">
-            <label class=" w-full font-bold my-1" for="flight_number">Flight Number: </label>
-            <input class=" w-full my-1 p-1 outline-none rounded-md" type="text" name="flight_number" id="flight_number" readonly>
+            <label class=" w-1/2 font-bold my-1" for="airline_name">Airline Name: </label>
+            <input class=" w-1/2 my-1 p-1 outline-none rounded-md" type="text" name="airline_name" id="airline_name" readonly>
           </div>
           <div class="flex w-full py-2 mx-auto text-xl flex-wrap">
-            <label class=" w-full font-bold my-1" for="departure_airport_code">Departure Airport: </label>
-            <input class=" w-full my-1 p-1 outline-none rounded-md" type="text" name="departure_airport_code" id="departure_airport_code" readonly>
+            <label class=" w-1/2 font-bold my-1" for="flight_number">Flight Number: </label>
+            <input class=" w-1/2 my-1 p-1 outline-none rounded-md" type="text" name="flight_number" id="flight_number" readonly>
           </div>
           <div class="flex w-full py-2 mx-auto text-xl flex-wrap">
-            <label class=" w-full font-bold my-1" for="arrival_airport_code">Arrival Airport: </label>
-            <input class=" w-full my-1 p-1 outline-none rounded-md" type="text" name="arrival_airport_code" id="arrival_airport_code" readonly>
+            <label class=" w-1/2 font-bold my-1" for="departure_airport_code">Departure Airport: </label>
+            <input class=" w-1/2 my-1 p-1 outline-none rounded-md" type="text" name="departure_airport_code" id="departure_airport_code" readonly>
           </div>
           <div class="flex w-full py-2 mx-auto text-xl flex-wrap">
-            <label class=" w-full font-bold my-1" for="available_seats">Available Seats: </label>
-            <input class=" w-full my-1 p-1 outline-none rounded-md" type="text" name="available_seats" id="available_seats" readonly>
+            <label class=" w-1/2 font-bold my-1" for="arrival_airport_code">Arrival Airport: </label>
+            <input class=" w-1/2 my-1 p-1 outline-none rounded-md" type="text" name="arrival_airport_code" id="arrival_airport_code" readonly>
           </div>
           <div class="flex w-full py-2 mx-auto text-xl flex-wrap">
-            <label class=" w-full font-bold my-1" for="class_of_service">Class of Service: </label>
-            <input class=" w-full my-1 p-1 outline-none rounded-md" type="text" name="class_of_service" id="class_of_service" readonly>
+            <label class=" w-1/2 font-bold my-1" for="available_seats">Available Seats: </label>
+            <input class=" w-1/2 my-1 p-1 outline-none rounded-md" type="text" name="available_seats" id="available_seats" readonly>
           </div>
-          <span class="w-full text-xl text-blue-500 font-semibold">Payment option</span>
           <div class="flex w-full py-2 mx-auto text-xl flex-wrap">
-            <label class=" w-full font-bold my-1" for="payment_option">Payment option: </label>
-            <select class=" w-full my-1 p-1 outline-none rounded-md" name="payment_option" id="payment_option">
+            <label class=" w-1/2 font-bold my-1" for="class_of_service">Class of Service: </label>
+            <input class=" w-1/2 my-1 p-1 outline-none rounded-md" type="text" name="class_of_service" id="class_of_service" readonly>
+          </div>
+          <span class="w-full text-xl text-blue-500 font-semibold text-center">Payment option</span>
+          <div class="flex w-full py-2 mx-auto text-xl flex-wrap">
+            <label class=" w-1/2 font-bold my-2 py-2" for="payment_option">Payment option: </label>
+            <select class=" w-1/2 my-2 p-1 outline-none rounded-md" name="payment_option" id="payment_option">
               <option value="">Select payment option</option>
               <option value="Book_Now">Book Now, Pay In Cash</option>
               <option value="Cash_Deposit">Cash Deposit</option>
