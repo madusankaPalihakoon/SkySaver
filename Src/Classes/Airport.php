@@ -15,7 +15,7 @@ class Airport
 
   public function getAirports()
   {
-    $sql = "SELECT `airport_code`, `airport_name`, `country` FROM `airportdetails`";
+    $sql = "SELECT `airport_id`, `airport_code`, `airport_name`, `city`, `country`, `terminal_number`, `gate_number` FROM `airportdetails`";
 
     $bindings = [];
 

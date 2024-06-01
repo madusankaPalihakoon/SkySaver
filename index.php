@@ -1,8 +1,8 @@
 <?php
-require_once __DIR__ . "/script/getAirpotList.php";
+require_once __DIR__ . "/script/getAirpots.php";
 require_once __DIR__ . "/script/getOffers.php";
 require_once __DIR__ . "/script/getShedule.php";
-$airports = getAirportList();
+$airports = getAirpotDetails();
 $offers = getOfferDetails();
 $shedules = getSheduleDetails();
 ?>
@@ -29,12 +29,12 @@ $shedules = getSheduleDetails();
           </a>
         </div>
         <div class=" w-fit h-auto mx-5 rounded-md text-nowrap hover:text-blue-600">
-          <a href="pages/flight_information.php">
+          <a href="pages/flights.php">
             FLIGHTS
           </a>
         </div>
         <div class=" w-fit h-auto mx-5 rounded-md text-nowrap hover:text-blue-600">
-          <a href="pages/airport_information.php">
+          <a href="pages/airports.php">
             AIRPORTS
           </a>
         </div>
@@ -146,17 +146,17 @@ $shedules = getSheduleDetails();
       </form>
     </div>
     <!-- offers -->
-    <sh class="flex mt-64 p-4 flex-wrap w-screen">
+    <div class="flex mt-64 p-4 flex-wrap w-screen">
       <h2 class="w-full text-blue-500 font-bold text-2xl ml-2">OFFERS</h2>
       <!-- offer loop -->
       <?php foreach ($offers as $offer) : ?>
         <?php
-        echo '<div class="flex w-11/12 bg-blue-200 mx-auto p-3 h-max my-4 rounded-md shadow-blue-300 shadow-xl">
-        <div class="w-1/2">
+        echo '<div class="flex w-11/12 flex-wrap bg-blue-200 mx-auto p-3 h-max my-4 rounded-md shadow-blue-300 shadow-xl justify-center gap-10">
+        <div class="w-96">
           <h2 class=" text-gray-900 font-bold mb-2 text-xl">' . $offer['offer_subject'] . '</h2>
-          <img class="w-4/5 h-80 object-cover rounded-md hover:scale-105 transition duration-1000" src="assets/img/inflight.jpg" alt="">
+          <img class="w-full mx-auto h-80 object-cover rounded-md hover:scale-105 transition duration-1000" src="assets/img/inflight.jpg" alt="">
         </div>
-        <div class="w-1/2">
+        <div class="w-96">
           <p class=" text-justify text-lg p-2">' . $offer['offer_details'] . '</p>
           <p class=" text-justify text-lg p-2">Offer Valid ' . $offer['offer_valid'] . '</p>
           <div class="py-4 w-full flex justify-center">
@@ -170,14 +170,14 @@ $shedules = getSheduleDetails();
       <div class="flex w-full mx-auto">
         <a class=" mx-auto bg-blue-600 text-blue-50 hover:bg-blue-700 rounded-md px-2 py-4 text-xl font-bold" href="pages/offers.php">All Offers</a>
       </div>
-      </div>
-      <!-- shedule main -->
-      <div class="flex mt-2 p-4 flex-wrap w-screen justify-center min-w-fit">
-        <h2 class="w-full text-blue-600 font-bold text-2xl ml-2">SHEDULES</h2>
-        <!-- shedule $shedule-->
-        <?php foreach ($shedules as $shedule) : ?>
-          <?php
-          echo '<div class="ml-2 flex w-1/4 bg-green-300 rounded-lg mt-2 overflow-hidden shadow-lg shadow-slate-600 min-w-fit">
+    </div>
+    <!-- shedule main -->
+    <div class="flex mt-2 p-4 flex-wrap w-screen justify-center">
+      <h2 class="w-full text-blue-600 font-bold text-2xl ml-2">SHEDULES</h2>
+      <!-- shedule $shedule-->
+      <?php foreach ($shedules as $shedule) : ?>
+        <?php
+        echo '<div class="ml-2 flex w-60 bg-green-300 rounded-lg mt-2 overflow-hidden shadow-lg shadow-slate-600">
           <div class="w-full h-fit">
             <img class="w-full h-44 object-cover" src="assets/img/swiper/01.jpg" alt="">
             <div class="mx-2 my-4">
@@ -190,20 +190,20 @@ $shedules = getSheduleDetails();
               <h4 class="w-full">
                 ' . $shedule['arrival_date'] . ' ' . $shedule['arrival_time'] . '
               </h4>
-              <div class="w-full text-right">
-                <span class=" grid mr-2">' . intval($shedule['taxes_fees']) + intval($shedule['base_fare']) . '</span>
+              <div class="w-full text-right mt-5">
+                <span class=" grid mr-2">' . intval($shedule['taxes_fees']) + intval($shedule['base_fare']) . '.00 ' . $shedule['currency'] . '</span>
                 <span class=" grid mr-2">' . $shedule['class_of_service'] . '</span>
               </div>
             </div>
           </div>
         </div>';
-          ?>
-        <?php endforeach; ?>
-        <!-- shedule -->
-      </div>
-      <div class="flex w-full mx-auto h-max">
-        <a class=" mx-auto bg-blue-600 text-blue-50 hover:bg-blue-700 rounded-md px-2 py-4 text-xl font-bold" href="pages/shedule.php">All Shedules</a>
-      </div>
+        ?>
+      <?php endforeach; ?>
+      <!-- shedule -->
+    </div>
+    <div class="flex w-full mx-auto h-max">
+      <a class=" mx-auto bg-blue-600 text-blue-50 hover:bg-blue-700 rounded-md px-2 py-4 text-xl font-bold" href="pages/shedule.php">All Shedules</a>
+    </div>
   </main>
   <footer>
     <div class="grid w-screen bg-gray-900 overflow-hidden">

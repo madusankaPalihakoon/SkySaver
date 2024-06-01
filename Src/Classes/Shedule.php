@@ -26,6 +26,7 @@ class Shedule
               s.arrival_time,
               s.taxes_fees,
               s.base_fare,
+              s.currency,
               f.class_of_service
             FROM 
                 schedule s

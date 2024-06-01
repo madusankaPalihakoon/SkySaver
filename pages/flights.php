@@ -1,3 +1,8 @@
+<?php
+require_once __DIR__ . "/../script/getFlights.php";
+
+$flights = getOfferDetails();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,12 +26,12 @@
           </a>
         </div>
         <div class=" w-fit h-auto mx-5 rounded-md text-nowrap hover:text-blue-600">
-          <a href="flight_information.php">
+          <a href="flights.php">
             FLIGHTS
           </a>
         </div>
         <div class=" w-fit h-auto mx-5 rounded-md text-nowrap hover:text-blue-600">
-          <a href="airport_information.php">
+          <a href="airports.php">
             AIRPORTS
           </a>
         </div>
@@ -57,54 +62,39 @@
   </header>
 
   <main>
-    <div class="flex mt-2 p-4 flex-wrap w-screen">
-      <h2 class="w-full text-blue-600 font-bold text-2xl ml-2 uppercase">Flight information</h2>
-      <!-- flight information -->
-      <div class="ml-2 flex w-1/4 bg-gray-400 rounded-lg mt-2 overflow-hidden shadow-lg shadow-slate-600">
-        <div class="w-full h-fit">
-          <img class="w-full h-44 object-cover" src="assets/img/swiper/01.jpg" alt="">
-          <div class="mx-2 my-4">
-            <h2 class=" text-wrap w-full text-blue-600 font-bold text-xl">
-              Colombo(CMB) to Melbourne(MLE)
-            </h2>
-            <h4 class="w-full">
-              06/13/2024 - 07/14/2024
-            </h4>
-            <div class="w-full text-right">
-              <span class=" grid mr-2">from</span>
-              <span class=" grid mr-2">LKR 328,932*</span>
-              <span class=" grid mr-2">seen: 7hrs ago</span>
-              <span class=" grid mr-2">Round-trip/Economy</span>
+    <div class="flex mt-2 p-4 flex-wrap w-screen justify-center">
+      <h2 class="w-full text-blue-600 font-bold text-2xl ml-2">FLIGHT INFORMATION</h2>
+      <!-- shedule $shedule-->
+      <?php foreach ($flights as $flight) : ?>
+        <?php
+        echo '<div class="ml-2 flex flex-wrap w-60 bg-green-300 rounded-lg mt-2 overflow-hidden shadow-lg shadow-slate-600">
+          <div class="w-full h-fit">
+            <img class="w-full h-44 object-cover" src="../assets/img/swiper/01.jpg" alt="">
+            <div class="mx-2 my-4">
+              <h2 class=" text-wrap w-full text-gray-800 font-bold text-xl mb-2">' . $flight['airline_name'] . '</h2>
+              <h2 class=" text-wrap w-full text-blue-600 font-bold text-xl">
+                ' . $flight['departure_airport_code'] . '(' . $flight['departure_airport_code'] . ')' . ' To ' . $flight['arrival_airport_code'] . '(' . $flight['arrival_airport_code'] . ')' . '
+              </h2>
+              <h4 class="w-full">
+                Available Seats ' . $flight['available_seats'] . '
+              </h4>
+              <h4 class="w-full">
+                Class of service' . $flight['class_of_service'] . '
+              </h4>
+              <div class="w-full text-right mt-5">
+                <span class=" grid mr-2">Currency ' . $flight['currency'] . '</span>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <!-- flight information -->
-      <!-- flight information -->
-      <div class="ml-2 flex w-1/4 bg-gray-400 rounded-lg mt-2 overflow-hidden shadow-lg shadow-slate-600">
-        <div class="w-full h-fit">
-          <img class="w-full h-44 object-cover" src="assets/img/swiper/01.jpg" alt="">
-          <div class="mx-2 my-4">
-            <h2 class=" text-wrap w-full text-blue-600 font-bold text-xl">
-              Colombo(CMB) to Melbourne(MLE)
-            </h2>
-            <h4 class="w-full">
-              06/13/2024 - 07/14/2024
-            </h4>
-            <div class="w-full text-right">
-              <span class=" grid mr-2">from</span>
-              <span class=" grid mr-2">LKR 328,932*</span>
-              <span class=" grid mr-2">seen: 7hrs ago</span>
-              <span class=" grid mr-2">Round-trip/Economy</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- flight information -->
-
+          <div class="w-full text-right py-2 mx-auto flex items-center justify-center">
+                <a class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-blue-50 font-bold text-xl text-nowrap rounded-md" href="booking.php?id=' . $flight['flight_id'] . '' . '&name=' . '' . $flight['airline_name'] . '">Book Now</a>
+              </div>
+        </div>';
+        ?>
+      <?php endforeach; ?>
+      <!-- shedule -->
     </div>
   </main>
-
   <footer>
     <div class="grid w-screen bg-gray-900 overflow-hidden">
       <div class="flex w-11/12 mx-auto py-5 flex-wrap">

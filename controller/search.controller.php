@@ -82,12 +82,10 @@ function handleOneWayTrip()
 
   $trip = new Trip();
   $data = $trip->getOneWayTrip($from, $to, $date);
-  echo json_encode($data);
-  $response = [
-    'status' => false,
-    'message' => 'One Way trip search handled successfully!'
-  ];
-  sendResponseJson($response);
+  $jsonData = json_encode($data);
+  $encodedData = urlencode($jsonData);
+  header('Location: ../pages/availability.php?data=' . $encodedData);
+  exit();
 }
 
 function handleInvalidSearch()
@@ -105,6 +103,6 @@ function sendResponseJson($response)
     echo json_encode($response, JSON_PRETTY_PRINT);
     exit;
   }
-  header('Location:' . $response['page'] . '', true, 200);
+  header('Location:' . $response['page'] . '');
   exit;
 }

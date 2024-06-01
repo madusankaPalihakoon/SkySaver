@@ -7,6 +7,6 @@ require_once __DIR__ . "/../vendor/autoload.php";
 function getSheduleDetails()
 {
   $shedule = new Shedule();
-  $sheduleDetails = $shedule->getShedule(5);
+  $sheduleDetails = $shedule->getShedule(3);
   return $sheduleDetails;
 }

@@ -12,4 +12,23 @@ class Flight
   {
     $this->execute = new Execute();
   }
+  public function getFlight()
+  {
+    $sql = "SELECT * FROM flightdetails";
+
+    $bindings = [];
+
+    try {
+      $stmt = $this->execute->run($sql, $bindings);
+      $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+      if ($stmt->rowCount() === 0) {
+        return [];
+      }
+
+      return $result;
+    } catch (\PDOException $e) {
+      return [];
+    }
+  }
 }
